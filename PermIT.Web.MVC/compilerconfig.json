@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "less/main.css",
+    "inputFile": "less/main.less"
+  },
+  {
+    "outputFile": "less/layouts.css",
+    "inputFile": "less/layouts.less"
+  }
+]

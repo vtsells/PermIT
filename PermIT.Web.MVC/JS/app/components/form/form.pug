@@ -1,0 +1,26 @@
+﻿form(data-bind="submit:onSubmit,css:grid")
+    |<!-- ko foreach:fields -->
+    .field
+        label(data-bind="text:text,attr:{for:$component.name+'_'+text.replace(/[^a-zA-Z0-9]/g,'')}")
+        p.form-block
+            |<!-- ko if:type=="select"-->
+            select(data-bind="css: { error: value.hasError },value:value,options: list, optionsText: 'text', optionsValue: 'value', optionsCaption:  'Choose One...',valueAllowUnset:true,attr:{disabled: isDisabled,id:$component.name+'_'+text.replace(/[^a-zA-Z0-9]/g,'')}")
+            |<!-- /ko-->
+            |<!-- ko if:type=="text" || type=="number" || type=="date"-->
+            input(data-bind="css: { error: value.hasError },textInput:value,attr:{disabled: isDisabled,type:type,id:$component.name+'_'+text.replace(/[^a-zA-Z0-9]/g,'')}")
+            |<!-- /ko-->
+            |<!-- ko if:type=="checkbox"-->
+            input(data-bind="css: { error: value.hasError },checked:value,attr:{disabled: isDisabled,type:type,id:$component.name+'_'+text.replace(/[^a-zA-Z0-9]/g,'')}")
+            |<!-- /ko-->
+            span.form-validation-message(data-bind="visible:value.hasError,text:value.validationMessage")
+    |<!-- /ko -->
+
+    span.spacer   
+    div.btn-group(data-bind="foreach:buttons")
+        |<!-- ko ifnot:type=="submit"-->
+        input(data-bind="css:css,attr:{type:type,value:text},click:click")
+        |<!-- /ko -->
+        |<!-- ko if:type=="submit"-->
+        input(data-bind="css:css,attr:{type:type,value:text}")
+        |<!-- /ko -->
+        //-input(type="submit",value="Save",class="btn btn-info")

@@ -1,0 +1,39 @@
+﻿.grid1x1
+    .grid-panel
+        h5 Unsynced Users
+        hr
+        .tablebox
+            table.striped
+                thead
+                    tr
+                        th 
+                            |<!-- ko component:{name:'loader',params:[loading_get]} -->
+                            |<!-- /ko -->
+                            |First Name
+                        th Last Name
+                        th Sync Action
+                        //th SID
+                tbody
+                    | <!--ko foreach:unSyncedUsers() -->
+                    tr(data-bind="click:function(){}")
+                        td(data-bind="text:FirstName")
+                        td(data-bind="text:LastName")
+                        td(data-bind="text:SyncStatusToString")
+                    | <!--/ko-->
+        hr
+        .btn.btn-positive.btn-block(data-bind="click:syncUsers")
+            |<!-- ko component:{name:'loader',params:[loading_syncing]} -->
+            |<!-- /ko -->
+            |Sync Users
+    //-.grid-panel
+    //-    h5 Actions
+    //-    hr
+    //-    div(data-bind="component:{name:'form',params:disableForm}")
+    //-    div(data-bind="component:{name:'form',params:enableForm}")
+    //-    div(data-bind="component:{name:'form',params:assignForm}")
+        //-div
+            //-.btn.btn-positive Assign Job
+            //-.btn.btn-negative Disable User
+            
+
+

@@ -1,0 +1,12 @@
+﻿ul(data-bind="foreach:links")
+    <!-- ko ifnot: typeof(hash)=='undefined' -->
+    li(data-bind="css:{'active': $root.hash().includes(hash)}")
+        a(data-bind="attr:{href:hash}")
+            i(data-bind="class:i")
+            span(data-bind="text:text")
+    <!-- /ko -->
+    <!-- ko if: typeof(hash)=='undefined' -->
+    li.nav-text
+        span(data-bind="text:text")
+
+    <!-- /ko -->

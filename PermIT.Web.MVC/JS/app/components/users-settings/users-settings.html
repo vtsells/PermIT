@@ -1,0 +1,20 @@
+
+<div class="grid1x1">
+  <div class="grid-panel">
+    <h5><span data-bind="component:{name:'loader',params:[loading_getQuery,loading_getDomains]}"> </span>Settings</h5>
+    <hr/>
+    <div class="field">
+      <label>Searchable Domains</label>
+      <p class="form-block">
+        <input class="long" data-bind="textInput:domains"/>
+      </p>
+    </div>
+    <div class="field">
+      <label>AD User Query</label>
+      <p class="form-block">
+        <input class="long" data-bind="textInput:query"/>
+      </p>
+    </div>
+    <div class="btn btn-neutral" data-bind="click:onSaveChanges">Save Changes</div>
+  </div>
+</div>

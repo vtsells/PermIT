@@ -1,0 +1,16 @@
+﻿.grid1x1
+    .grid-panel
+
+        h5
+            span(data-bind="component:{name:'loader',params:[loading_getQuery,loading_getDomains]}") 
+            | Settings
+        hr
+        .field
+            label Searchable Domains
+            p.form-block
+                input.long(data-bind="textInput:domains")
+        .field
+            label AD User Query
+            p.form-block
+                input.long(data-bind="textInput:query")
+        .btn.btn-neutral(data-bind="click:onSaveChanges") Save Changes

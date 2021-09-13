@@ -1,0 +1,30 @@
+﻿.grid1x1
+    .grid-panel
+        .tablebox
+            table.striped.hover
+                thead
+                    tr
+                        th 
+                            |<!-- ko component:{name:'loader',params:[loading_get]} -->
+                            |<!-- /ko -->
+                            |First Name
+                        th Last Name
+                        th Enabled
+                        th Jobs
+                        th Actions
+                tbody
+                    | <!--ko foreach:users() -->
+                    tr(data-bind="click:function(){$component.select(Id)}")
+                        td(data-bind="text:FirstName")
+                        td(data-bind="text:LastName")
+                        td
+                            input(type="checkbox",data-bind="checked:Enabled")
+                        td(data-bind="text:Jobs")
+                        td
+                            div(data-bind="visible:$component.selectedId()==Id")
+                                .btn.btn-positive.btn-block(data-bind="visible:!Enabled,click:$component.onEnableUser") Enable
+                                .btn.btn-negative.btn-block(data-bind="visible:Enabled,click:$component.onDisableUser") Disable
+                                div.flexRow
+                                    .btn.btn-neutral(data-bind="click:$component.onAssignJob") Assign Job
+                                    select(data-bind="value:$component.assignJob.jobId,options: $component.jobList, optionsText: 'text', optionsValue: 'value', optionsCaption:  'Choose One...',valueAllowUnset:true")
+                    | <!--/ko-->

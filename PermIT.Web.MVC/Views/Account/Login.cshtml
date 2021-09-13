@@ -1,0 +1,49 @@
+﻿@using PermIT.Web.MVC.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<section class="loginForm">
+    <div class="login-form-middle">
+        <h2>Login</h2>
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div>
+                @Html.AntiForgeryToken()
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <br />
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <br />
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="checkbox">
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe)
+            </div>
+
+            <input type="submit" value="Log in" class="btn btn-primary" />
+
+
+            @Html.ActionLink("Register as a new user", "Register")
+        }
+        @*@using (Html.BeginForm("LoginWindows", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+
+
+            <input type="submit" value="Log in with Windows" class="btn btn-primary" />
+
+        }*@
+    </div>
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

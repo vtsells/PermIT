@@ -1,0 +1,15 @@
+
+<section class="layout-simple">
+  <section class="sidebar">
+    <div class="flex-row" id="sidebar-header"><i class="fas fa-theater-masks"></i><span data-bind="text:$root.title"></span></div>
+    <nav data-bind="component:{name:'nav',params:nav}"></nav>
+  </section>
+  <section class="header"><span class="padded" id="page-header" data-bind="text:page">Home</span>
+    <ul class="icon-list horizontal right">
+      <li>
+        <form id="logout-form" action="/Account/LogOff" method="POST"><a href="javascript:sessionStorage.removeItem('accessToken');document.querySelector('#logout-form').submit()"><i class="fas fa-user-circle"></i></a></form>
+      </li>
+    </ul>
+  </section>
+  <section class="content" data-bind="visible:($root.hash().includes('#users')),component:{name:'users'}"></section>
+</section>

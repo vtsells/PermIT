@@ -1,0 +1,16 @@
+﻿@*@section SPAViews {
+        @Html.Partial("_Home")
+    }
+    @section Scripts{
+        @Scripts.Render("~/bundles/knockout")
+        @Scripts.Render("~/bundles/app")
+    }*@
+@*@{
+    var type = new { val1 = 1, obs = new[] { new { name = "Name1", value = "1" }, new { name = "Name2", value = "2" } } };
+
+}
+    @Html.ActionLink("ReportInventory", "SetPassword","ReportInventory",type,null)*@
+<script type="text/javascript" src="~/JS/app/config.js"></script>
+<script type="text/javascript"
+        data-main="/JS/app/app.js" src="~/JS/lib/require.js/require.js"></script>
+<div data-bind="component: 'dashboard'"></div>

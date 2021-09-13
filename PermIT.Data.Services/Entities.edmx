@@ -1,0 +1,1959 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PermITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ApplicationUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Hometown" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Checklist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IsComplete" Type="int" />
+        </EntityType>
+        <EntityType Name="ChecklistItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ChecklistId" Type="int" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChecklistTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="OnRemove" Type="bit" />
+        </EntityType>
+        <EntityType Name="ChecklistTemplateItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ChecklistTemplateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DepartmentUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Exception">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Reason" Type="varchar(max)" />
+          <Property Name="When" Type="datetime" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="PermissionId" Type="int" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ApplicationId" Type="int" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="JobUser">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="JobId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="JobId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ApplicationId" Type="int" />
+          <Property Name="ParentId" Type="int" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="SID" Type="nvarchar(max)" />
+          <Property Name="Enabled" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.Application_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Application_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.Checklist_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Checklist_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.ChecklistItem_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChecklistItem_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="Checklist" Type="nvarchar(max)" />
+          <Property Name="ChecklistId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.ChecklistPerUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChecklistPerUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="user" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="userId" Type="int" />
+          <Property Name="user" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsComplete" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.ChecklistTemplate_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChecklistTemplate_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="Job" Type="nvarchar(max)" />
+          <Property Name="JobId" Type="int" />
+          <Property Name="OnRemove" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.ChecklistTemplateItem_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ChecklistTemplateItem_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="ChecklistTemplate" Type="nvarchar(max)" />
+          <Property Name="ChecklistTemplateId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.Department_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Department_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.Group_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Group_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="Application" Type="nvarchar(max)" />
+          <Property Name="ApplicationId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.Job_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Job_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.Permission_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Permission_List">
+          <Key>
+            <PropertyRef Name="text" />
+          </Key>
+          <Property Name="Id" Type="int" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Parent" Type="nvarchar(max)" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ApplicationId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.User_IncludeJobs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User_IncludeJobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="Jobs" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PermIT.dbo.User_List' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="User_List">
+          <Key>
+            <PropertyRef Name="value" />
+            <PropertyRef Name="text" />
+          </Key>
+          <Property Name="value" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="text" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="Application_Group">
+          <End Role="Application" Type="Self.Application" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Application_Permission">
+          <End Role="Application" Type="Self.Application" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Permission" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Checklist_ChecklistItem">
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChecklistItem" Type="Self.ChecklistItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Checklist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChecklistItem">
+              <PropertyRef Name="ChecklistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Checklist_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Checklist">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ChecklistTemplate_ChecklistTemplateItem">
+          <End Role="ChecklistTemplate" Type="Self.ChecklistTemplate" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChecklistTemplateItem" Type="Self.ChecklistTemplateItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChecklistTemplateItem">
+              <PropertyRef Name="ChecklistTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationUser_ToApplication">
+          <End Role="Application" Type="Self.Application" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApplicationUser_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ApplicationUser" Type="Self.ApplicationUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ApplicationUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentUser_ToDepartment">
+          <End Role="Department" Type="Self.Department" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentUser" Type="Self.DepartmentUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentUser">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DepartmentUser_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DepartmentUser" Type="Self.DepartmentUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DepartmentUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_ToGroup">
+          <End Role="Group" Type="Self.Group" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GroupUser_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GroupUser" Type="Self.GroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GroupUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobUser_ToJob">
+          <End Role="Job" Type="Self.Job" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobUser" Type="Self.JobUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobUser">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_JobUser_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="JobUser" Type="Self.JobUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="JobUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Job_ChecklistTemplate">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChecklistTemplate" Type="Self.ChecklistTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChecklistTemplate">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Permission_Exception">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Exception" Type="Self.Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exception">
+              <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Permission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+          <End Role="Permission1" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Exception">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Exception" Type="Self.Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exception">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Application_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Checklist_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ChecklistItem_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="checklistId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ChecklistTemplate_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="jobId" Type="int" Mode="In" />
+          <Parameter Name="onRemove" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="ChecklistTemplateItem_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="checklistTemplateId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Department_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Group_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="applicationId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Job_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Permission_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="applicationId" Type="int" Mode="In" />
+          <Parameter Name="parentId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Users_AsSelectList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="isEnabled" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="PermITModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="__RefactorLog" EntityType="Self.__RefactorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicationUser" EntityType="Self.ApplicationUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Checklist" EntityType="Self.Checklist" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistItem" EntityType="Self.ChecklistItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistTemplate" EntityType="Self.ChecklistTemplate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChecklistTemplateItem" EntityType="Self.ChecklistTemplateItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentUser" EntityType="Self.DepartmentUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exception" EntityType="Self.Exception" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobUser" EntityType="Self.JobUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Setting" EntityType="Self.Setting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Application_List" EntityType="Self.Application_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Application_List].[value] AS [value], 
+    [Application_List].[text] AS [text]
+    FROM [dbo].[Application_List] AS [Application_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Checklist_List" EntityType="Self.Checklist_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Checklist_List].[value] AS [value], 
+    [Checklist_List].[text] AS [text]
+    FROM [dbo].[Checklist_List] AS [Checklist_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChecklistItem_List" EntityType="Self.ChecklistItem_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChecklistItem_List].[value] AS [value], 
+    [ChecklistItem_List].[text] AS [text], 
+    [ChecklistItem_List].[Checklist] AS [Checklist], 
+    [ChecklistItem_List].[ChecklistId] AS [ChecklistId]
+    FROM [dbo].[ChecklistItem_List] AS [ChecklistItem_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChecklistPerUser" EntityType="Self.ChecklistPerUser" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChecklistPerUser].[Id] AS [Id], 
+    [ChecklistPerUser].[Name] AS [Name], 
+    [ChecklistPerUser].[userId] AS [userId], 
+    [ChecklistPerUser].[user] AS [user], 
+    [ChecklistPerUser].[IsComplete] AS [IsComplete]
+    FROM [dbo].[ChecklistPerUser] AS [ChecklistPerUser]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChecklistTemplate_List" EntityType="Self.ChecklistTemplate_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChecklistTemplate_List].[value] AS [value], 
+    [ChecklistTemplate_List].[text] AS [text], 
+    [ChecklistTemplate_List].[Job] AS [Job], 
+    [ChecklistTemplate_List].[JobId] AS [JobId], 
+    [ChecklistTemplate_List].[OnRemove] AS [OnRemove]
+    FROM [dbo].[ChecklistTemplate_List] AS [ChecklistTemplate_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ChecklistTemplateItem_List" EntityType="Self.ChecklistTemplateItem_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ChecklistTemplateItem_List].[value] AS [value], 
+    [ChecklistTemplateItem_List].[text] AS [text], 
+    [ChecklistTemplateItem_List].[ChecklistTemplate] AS [ChecklistTemplate], 
+    [ChecklistTemplateItem_List].[ChecklistTemplateId] AS [ChecklistTemplateId]
+    FROM [dbo].[ChecklistTemplateItem_List] AS [ChecklistTemplateItem_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Department_List" EntityType="Self.Department_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Department_List].[value] AS [value], 
+    [Department_List].[text] AS [text]
+    FROM [dbo].[Department_List] AS [Department_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Group_List" EntityType="Self.Group_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Group_List].[value] AS [value], 
+    [Group_List].[text] AS [text], 
+    [Group_List].[Application] AS [Application], 
+    [Group_List].[ApplicationId] AS [ApplicationId]
+    FROM [dbo].[Group_List] AS [Group_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Job_List" EntityType="Self.Job_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Job_List].[value] AS [value], 
+    [Job_List].[text] AS [text]
+    FROM [dbo].[Job_List] AS [Job_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Permission_List" EntityType="Self.Permission_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Permission_List].[Id] AS [Id], 
+    [Permission_List].[text] AS [text], 
+    [Permission_List].[Parent] AS [Parent], 
+    [Permission_List].[ParentId] AS [ParentId], 
+    [Permission_List].[Name] AS [Name], 
+    [Permission_List].[ApplicationId] AS [ApplicationId]
+    FROM [dbo].[Permission_List] AS [Permission_List]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="User_IncludeJobs" EntityType="Self.User_IncludeJobs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User_IncludeJobs].[Id] AS [Id], 
+    [User_IncludeJobs].[FirstName] AS [FirstName], 
+    [User_IncludeJobs].[LastName] AS [LastName], 
+    [User_IncludeJobs].[Enabled] AS [Enabled], 
+    [User_IncludeJobs].[Jobs] AS [Jobs]
+    FROM [dbo].[User_IncludeJobs] AS [User_IncludeJobs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="User_List" EntityType="Self.User_List" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [User_List].[value] AS [value], 
+    [User_List].[text] AS [text]
+    FROM [dbo].[User_List] AS [User_List]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Application_Group" Association="Self.Application_Group">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="Application_Permission" Association="Self.Application_Permission">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="Permission" EntitySet="Permission" />
+          </AssociationSet>
+          <AssociationSet Name="Checklist_ChecklistItem" Association="Self.Checklist_ChecklistItem">
+            <End Role="Checklist" EntitySet="Checklist" />
+            <End Role="ChecklistItem" EntitySet="ChecklistItem" />
+          </AssociationSet>
+          <AssociationSet Name="Checklist_User" Association="Self.Checklist_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Checklist" EntitySet="Checklist" />
+          </AssociationSet>
+          <AssociationSet Name="ChecklistTemplate_ChecklistTemplateItem" Association="Self.ChecklistTemplate_ChecklistTemplateItem">
+            <End Role="ChecklistTemplate" EntitySet="ChecklistTemplate" />
+            <End Role="ChecklistTemplateItem" EntitySet="ChecklistTemplateItem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationUser_ToApplication" Association="Self.FK_ApplicationUser_ToApplication">
+            <End Role="Application" EntitySet="Application" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApplicationUser_ToUser" Association="Self.FK_ApplicationUser_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="ApplicationUser" EntitySet="ApplicationUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentUser_ToDepartment" Association="Self.FK_DepartmentUser_ToDepartment">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="DepartmentUser" EntitySet="DepartmentUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DepartmentUser_ToUser" Association="Self.FK_DepartmentUser_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="DepartmentUser" EntitySet="DepartmentUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_ToGroup" Association="Self.FK_GroupUser_ToGroup">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="GroupUser" EntitySet="GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GroupUser_ToUser" Association="Self.FK_GroupUser_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="GroupUser" EntitySet="GroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobUser_ToJob" Association="Self.FK_JobUser_ToJob">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="JobUser" EntitySet="JobUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_JobUser_ToUser" Association="Self.FK_JobUser_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="JobUser" EntitySet="JobUser" />
+          </AssociationSet>
+          <AssociationSet Name="Job_ChecklistTemplate" Association="Self.Job_ChecklistTemplate">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="ChecklistTemplate" EntitySet="ChecklistTemplate" />
+          </AssociationSet>
+          <AssociationSet Name="Permission_Exception" Association="Self.Permission_Exception">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Exception" EntitySet="Exception" />
+          </AssociationSet>
+          <AssociationSet Name="Permission_Permission" Association="Self.Permission_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="Permission1" EntitySet="Permission" />
+          </AssociationSet>
+          <AssociationSet Name="User_Exception" Association="Self.User_Exception">
+            <End Role="User" EntitySet="User" />
+            <End Role="Exception" EntitySet="Exception" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PermITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="C__RefactorLog">
+          <Key>
+            <PropertyRef Name="OperationKey" />
+          </Key>
+          <Property Name="OperationKey" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Groups" Relationship="Self.Application_Group" FromRole="Application" ToRole="Group" />
+          <NavigationProperty Name="Permissions" Relationship="Self.Application_Permission" FromRole="Application" ToRole="Permission" />
+          <NavigationProperty Name="Users" Relationship="Self.ApplicationUser" FromRole="Application" ToRole="User" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Hometown" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Checklist">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="ChecklistItems" Relationship="Self.Checklist_ChecklistItem" FromRole="Checklist" ToRole="ChecklistItem" />
+          <NavigationProperty Name="User" Relationship="Self.Checklist_User" FromRole="Checklist" ToRole="User" />
+          <Property Name="IsComplete" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ChecklistItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChecklistId" Type="Int32" />
+          <Property Name="Completed" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Checklist" Relationship="Self.Checklist_ChecklistItem" FromRole="ChecklistItem" ToRole="Checklist" />
+        </EntityType>
+        <EntityType Name="ChecklistTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobId" Type="Int32" />
+          <NavigationProperty Name="ChecklistTemplateItems" Relationship="Self.ChecklistTemplate_ChecklistTemplateItem" FromRole="ChecklistTemplate" ToRole="ChecklistTemplateItem" />
+          <NavigationProperty Name="Job" Relationship="Self.Job_ChecklistTemplate" FromRole="ChecklistTemplate" ToRole="Job" />
+          <Property Name="OnRemove" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ChecklistTemplateItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChecklistTemplateId" Type="Int32" />
+          <NavigationProperty Name="ChecklistTemplate" Relationship="Self.ChecklistTemplate_ChecklistTemplateItem" FromRole="ChecklistTemplateItem" ToRole="ChecklistTemplate" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="Self.DepartmentUser" FromRole="Department" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Exception">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="When" Type="DateTime" Precision="3" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="PermissionId" Type="Int32" />
+          <NavigationProperty Name="Permission" Relationship="Self.Permission_Exception" FromRole="Exception" ToRole="Permission" />
+          <NavigationProperty Name="User" Relationship="Self.User_Exception" FromRole="Exception" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <NavigationProperty Name="Application" Relationship="Self.Application_Group" FromRole="Group" ToRole="Application" />
+          <NavigationProperty Name="Users" Relationship="Self.GroupUser" FromRole="Group" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ChecklistTemplates" Relationship="Self.Job_ChecklistTemplate" FromRole="Job" ToRole="ChecklistTemplate" />
+          <NavigationProperty Name="Users" Relationship="Self.JobUser" FromRole="Job" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" />
+          <NavigationProperty Name="Application" Relationship="Self.Application_Permission" FromRole="Permission" ToRole="Application" />
+          <NavigationProperty Name="Exceptions" Relationship="Self.Permission_Exception" FromRole="Permission" ToRole="Exception" />
+          <NavigationProperty Name="Permission1" Relationship="Self.Permission_Permission" FromRole="Permission" ToRole="Permission1" />
+          <NavigationProperty Name="Permission2" Relationship="Self.Permission_Permission" FromRole="Permission1" ToRole="Permission" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Boolean" />
+          <NavigationProperty Name="Checklists" Relationship="Self.Checklist_User" FromRole="User" ToRole="Checklist" />
+          <NavigationProperty Name="Exceptions" Relationship="Self.User_Exception" FromRole="User" ToRole="Exception" />
+          <NavigationProperty Name="Applications" Relationship="Self.ApplicationUser" FromRole="User" ToRole="Application" />
+          <NavigationProperty Name="Departments" Relationship="Self.DepartmentUser" FromRole="User" ToRole="Department" />
+          <NavigationProperty Name="Groups" Relationship="Self.GroupUser" FromRole="User" ToRole="Group" />
+          <NavigationProperty Name="Jobs" Relationship="Self.JobUser" FromRole="User" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Application_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Checklist_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ChecklistItem_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Checklist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChecklistId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ChecklistTemplate_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Job" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobId" Type="Int32" />
+          <Property Name="OnRemove" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ChecklistTemplateItem_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChecklistTemplate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ChecklistTemplateId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Department_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Group_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Application" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Job_List">
+          <Key>
+            <PropertyRef Name="value" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Permission_List">
+          <Key>
+            <PropertyRef Name="text" />
+          </Key>
+          <Property Name="Id" Type="Int32" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Parent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="User_List">
+          <Key>
+            <PropertyRef Name="value" />
+            <PropertyRef Name="text" />
+          </Key>
+          <Property Name="value" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <Association Name="Application_Group">
+          <End Role="Application" Type="Self.Application" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Application_Permission">
+          <End Role="Application" Type="Self.Application" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Permission" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Application">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Checklist_ChecklistItem">
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChecklistItem" Type="Self.ChecklistItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Checklist">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChecklistItem">
+              <PropertyRef Name="ChecklistId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Checklist_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Checklist" Type="Self.Checklist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Checklist">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ChecklistTemplate_ChecklistTemplateItem">
+          <End Role="ChecklistTemplate" Type="Self.ChecklistTemplate" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChecklistTemplateItem" Type="Self.ChecklistTemplateItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChecklistTemplate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChecklistTemplateItem">
+              <PropertyRef Name="ChecklistTemplateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Job_ChecklistTemplate">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ChecklistTemplate" Type="Self.ChecklistTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ChecklistTemplate">
+              <PropertyRef Name="JobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Permission_Exception">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Exception" Type="Self.Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exception">
+              <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="User_Exception">
+          <End Role="User" Type="Self.User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Exception" Type="Self.Exception" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Exception">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Permission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+          <End Role="Permission1" Type="Self.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Permission1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser">
+          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <Association Name="DepartmentUser">
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <Association Name="GroupUser">
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <Association Name="JobUser">
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="PermITEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="C__RefactorLog" EntityType="Self.C__RefactorLog" />
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Checklists" EntityType="Self.Checklist" />
+          <EntitySet Name="ChecklistItems" EntityType="Self.ChecklistItem" />
+          <EntitySet Name="ChecklistTemplates" EntityType="Self.ChecklistTemplate" />
+          <EntitySet Name="ChecklistTemplateItems" EntityType="Self.ChecklistTemplateItem" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Exceptions" EntityType="Self.Exception" />
+          <EntitySet Name="Groups" EntityType="Self.Group" />
+          <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Application_List" EntityType="Self.Application_List" />
+          <EntitySet Name="Checklist_List" EntityType="Self.Checklist_List" />
+          <EntitySet Name="ChecklistItem_List" EntityType="Self.ChecklistItem_List" />
+          <EntitySet Name="ChecklistTemplate_List" EntityType="Self.ChecklistTemplate_List" />
+          <EntitySet Name="ChecklistTemplateItem_List" EntityType="Self.ChecklistTemplateItem_List" />
+          <EntitySet Name="Department_List" EntityType="Self.Department_List" />
+          <EntitySet Name="Group_List" EntityType="Self.Group_List" />
+          <EntitySet Name="Job_List" EntityType="Self.Job_List" />
+          <EntitySet Name="Permission_List" EntityType="Self.Permission_List" />
+          <EntitySet Name="User_List" EntityType="Self.User_List" />
+          <AssociationSet Name="Application_Group" Association="Self.Application_Group">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="Application_Permission" Association="Self.Application_Permission">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="Permission" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="Checklist_ChecklistItem" Association="Self.Checklist_ChecklistItem">
+            <End Role="Checklist" EntitySet="Checklists" />
+            <End Role="ChecklistItem" EntitySet="ChecklistItems" />
+          </AssociationSet>
+          <AssociationSet Name="Checklist_User" Association="Self.Checklist_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Checklist" EntitySet="Checklists" />
+          </AssociationSet>
+          <AssociationSet Name="ChecklistTemplate_ChecklistTemplateItem" Association="Self.ChecklistTemplate_ChecklistTemplateItem">
+            <End Role="ChecklistTemplate" EntitySet="ChecklistTemplates" />
+            <End Role="ChecklistTemplateItem" EntitySet="ChecklistTemplateItems" />
+          </AssociationSet>
+          <AssociationSet Name="Job_ChecklistTemplate" Association="Self.Job_ChecklistTemplate">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="ChecklistTemplate" EntitySet="ChecklistTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="Permission_Exception" Association="Self.Permission_Exception">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Exception" EntitySet="Exceptions" />
+          </AssociationSet>
+          <AssociationSet Name="User_Exception" Association="Self.User_Exception">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Exception" EntitySet="Exceptions" />
+          </AssociationSet>
+          <AssociationSet Name="Permission_Permission" Association="Self.Permission_Permission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Permission1" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser" Association="Self.ApplicationUser">
+            <End Role="Application" EntitySet="Applications" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentUser" Association="Self.DepartmentUser">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="GroupUser" Association="Self.GroupUser">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="JobUser" Association="Self.JobUser">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="Application_AsSelectList" ReturnType="Collection(PermITModel.Application_AsSelectList_Result)" />
+          <FunctionImport Name="Checklist_AsSelectList" ReturnType="Collection(PermITModel.Checklist_AsSelectList_Result)" />
+          <FunctionImport Name="ChecklistItem_AsSelectList" ReturnType="Collection(PermITModel.ChecklistItem_AsSelectList_Result)">
+          <Parameter Name="checklistId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ChecklistTemplate_AsSelectList" ReturnType="Collection(PermITModel.ChecklistTemplate_AsSelectList_Result)">
+            <Parameter Name="jobId" Mode="In" Type="Int32" />
+            <Parameter Name="onRemove" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="ChecklistTemplateItem_AsSelectList" ReturnType="Collection(PermITModel.ChecklistTemplateItem_AsSelectList_Result)">
+          <Parameter Name="checklistTemplateId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Department_AsSelectList" ReturnType="Collection(PermITModel.Department_AsSelectList_Result)" />
+          <FunctionImport Name="Group_AsSelectList" ReturnType="Collection(PermITModel.Group_AsSelectList_Result)">
+          <Parameter Name="applicationId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Job_AsSelectList" ReturnType="Collection(PermITModel.Job_AsSelectList_Result)" />
+          <FunctionImport Name="Permission_AsSelectList" ReturnType="Collection(PermITModel.Permission_AsSelectList_Result)">
+            <Parameter Name="applicationId" Mode="In" Type="Int32" />
+            <Parameter Name="parentId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="User_AsSelectList" ReturnType="Collection(PermITModel.User_AsSelectList_Result)">
+            <Parameter Name="isEnabled" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="Users_AsSelectList" ReturnType="Collection(PermITModel.Users_AsSelectList_Result)">
+          <Parameter Name="isEnabled" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="User_IncludeJobs" EntityType="PermITModel.User_IncludeJobs" />
+          <EntitySet Name="ChecklistPerUsers" EntityType="PermITModel.ChecklistPerUser" />
+        </EntityContainer>
+        <ComplexType Name="Application_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Checklist_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ChecklistItem_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+          <Property Type="String" Name="Checklist" Nullable="true" />
+          <Property Type="Int32" Name="ChecklistId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ChecklistTemplate_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+          <Property Type="String" Name="Job" Nullable="true" />
+          <Property Type="Int32" Name="JobId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ChecklistTemplateItem_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+          <Property Type="String" Name="ChecklistTemplate" Nullable="true" />
+          <Property Type="Int32" Name="ChecklistTemplateId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Department_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Group_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+          <Property Type="String" Name="Application" Nullable="true" />
+          <Property Type="Int32" Name="ApplicationId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Job_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Permission_AsSelectList_Result">
+          <Property Type="Int32" Name="Id" Nullable="true" />
+          <Property Type="String" Name="text" Nullable="false" />
+          <Property Type="String" Name="Parent" Nullable="true" />
+          <Property Type="Int32" Name="ParentId" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="Int32" Name="ApplicationId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="User_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Users_AsSelectList_Result">
+          <Property Type="Int32" Name="value" Nullable="false" />
+          <Property Type="String" Name="text" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="User_IncludeJobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="Jobs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ChecklistPerUser">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="user" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="user" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsComplete" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PermITModelStoreContainer" CdmEntityContainer="PermITEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="PermITModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__RefactorLog">
+            <EntityTypeMapping TypeName="PermITModel.C__RefactorLog">
+              <MappingFragment StoreEntitySet="__RefactorLog">
+                <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="PermITModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="PermITModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="PermITModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="PermITModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="PermITModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hometown" ColumnName="Hometown" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checklists">
+            <EntityTypeMapping TypeName="PermITModel.Checklist">
+              <MappingFragment StoreEntitySet="Checklist">
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistItems">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistItem">
+              <MappingFragment StoreEntitySet="ChecklistItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ChecklistId" ColumnName="ChecklistId" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistTemplates">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistTemplate">
+              <MappingFragment StoreEntitySet="ChecklistTemplate">
+                <ScalarProperty Name="OnRemove" ColumnName="OnRemove" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistTemplateItems">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistTemplateItem">
+              <MappingFragment StoreEntitySet="ChecklistTemplateItem">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ChecklistTemplateId" ColumnName="ChecklistTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="PermITModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exceptions">
+            <EntityTypeMapping TypeName="PermITModel.Exception">
+              <MappingFragment StoreEntitySet="Exception">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="When" ColumnName="When" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="PermITModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="PermITModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="PermITModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="PermITModel.Setting">
+              <MappingFragment StoreEntitySet="Setting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PermITModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Application_List">
+            <EntityTypeMapping TypeName="PermITModel.Application_List">
+              <MappingFragment StoreEntitySet="Application_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checklist_List">
+            <EntityTypeMapping TypeName="PermITModel.Checklist_List">
+              <MappingFragment StoreEntitySet="Checklist_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistItem_List">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistItem_List">
+              <MappingFragment StoreEntitySet="ChecklistItem_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Checklist" ColumnName="Checklist" />
+                <ScalarProperty Name="ChecklistId" ColumnName="ChecklistId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistTemplate_List">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistTemplate_List">
+              <MappingFragment StoreEntitySet="ChecklistTemplate_List">
+                <ScalarProperty Name="OnRemove" ColumnName="OnRemove" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistTemplateItem_List">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistTemplateItem_List">
+              <MappingFragment StoreEntitySet="ChecklistTemplateItem_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="ChecklistTemplate" ColumnName="ChecklistTemplate" />
+                <ScalarProperty Name="ChecklistTemplateId" ColumnName="ChecklistTemplateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department_List">
+            <EntityTypeMapping TypeName="PermITModel.Department_List">
+              <MappingFragment StoreEntitySet="Department_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_List">
+            <EntityTypeMapping TypeName="PermITModel.Group_List">
+              <MappingFragment StoreEntitySet="Group_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job_List">
+            <EntityTypeMapping TypeName="PermITModel.Job_List">
+              <MappingFragment StoreEntitySet="Job_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission_List">
+            <EntityTypeMapping TypeName="PermITModel.Permission_List">
+              <MappingFragment StoreEntitySet="Permission_List">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_List">
+            <EntityTypeMapping TypeName="PermITModel.User_List">
+              <MappingFragment StoreEntitySet="User_List">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ApplicationUser" TypeName="PermITModel.ApplicationUser" StoreEntitySet="ApplicationUser">
+            <EndProperty Name="Application">
+              <ScalarProperty Name="Id" ColumnName="ApplicationId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="PermITModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DepartmentUser" TypeName="PermITModel.DepartmentUser" StoreEntitySet="DepartmentUser">
+            <EndProperty Name="Department">
+              <ScalarProperty Name="Id" ColumnName="DepartmentId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="GroupUser" TypeName="PermITModel.GroupUser" StoreEntitySet="GroupUser">
+            <EndProperty Name="Group">
+              <ScalarProperty Name="Id" ColumnName="GroupId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="JobUser" TypeName="PermITModel.JobUser" StoreEntitySet="JobUser">
+            <EndProperty Name="Job">
+              <ScalarProperty Name="Id" ColumnName="JobId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Application_AsSelectList" FunctionName="PermITModel.Store.Application_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Application_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Checklist_AsSelectList" FunctionName="PermITModel.Store.Checklist_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Checklist_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChecklistItem_AsSelectList" FunctionName="PermITModel.Store.ChecklistItem_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.ChecklistItem_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Checklist" ColumnName="Checklist" />
+                <ScalarProperty Name="ChecklistId" ColumnName="ChecklistId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChecklistTemplate_AsSelectList" FunctionName="PermITModel.Store.ChecklistTemplate_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.ChecklistTemplate_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Job" ColumnName="Job" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ChecklistTemplateItem_AsSelectList" FunctionName="PermITModel.Store.ChecklistTemplateItem_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.ChecklistTemplateItem_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="ChecklistTemplate" ColumnName="ChecklistTemplate" />
+                <ScalarProperty Name="ChecklistTemplateId" ColumnName="ChecklistTemplateId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Department_AsSelectList" FunctionName="PermITModel.Store.Department_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Department_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Group_AsSelectList" FunctionName="PermITModel.Store.Group_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Group_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Job_AsSelectList" FunctionName="PermITModel.Store.Job_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Job_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Permission_AsSelectList" FunctionName="PermITModel.Store.Permission_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Permission_AsSelectList_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Users_AsSelectList" FunctionName="PermITModel.Store.Users_AsSelectList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PermITModel.Users_AsSelectList_Result">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="text" ColumnName="text" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="User_IncludeJobs">
+            <EntityTypeMapping TypeName="PermITModel.User_IncludeJobs">
+              <MappingFragment StoreEntitySet="User_IncludeJobs">
+                <ScalarProperty Name="Jobs" ColumnName="Jobs" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChecklistPerUsers">
+            <EntityTypeMapping TypeName="PermITModel.ChecklistPerUser">
+              <MappingFragment StoreEntitySet="ChecklistPerUser">
+                <ScalarProperty Name="IsComplete" ColumnName="IsComplete" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

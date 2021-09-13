@@ -1,0 +1,78 @@
+﻿@b-c-positive: @c-primary;
+@b-c-negative: spin(@b-c-positive,-320);
+@b-c-neutral: spin(@b-c-positive,-150);
+
+.btn {
+    display: inline-block;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 5px;
+    width: min-content;
+    white-space: nowrap;
+    cursor: pointer;
+    margin: 2px;
+    transition: all 50ms linear;
+    box-shadow: 2px 2px 2px 1px rgba(0,0,0,.1);
+    box-sizing: border-box;
+    text-align: center;
+    background-color: transparent;
+
+    &.btn-block {
+        width: 100%;
+    }
+
+    &:hover {
+        box-shadow: 1px 1px 2px 2px rgba(0,0,0,.1);
+    }
+
+    &.btn-positive {
+        border-color: @b-c-positive;
+        color: @b-c-positive;
+       // background-color: transparent;
+
+        &:hover {
+            background-color: @b-c-positive;
+            color: #fff;
+        }
+    }
+
+    &.btn-negative {
+        border-color: @b-c-negative;
+        color: @b-c-negative;
+       // background-color: transparent;
+
+        &:hover {
+            background-color: @b-c-negative;
+            color: #fff;
+        }
+    }
+
+    &.btn-neutral {
+        border-color: @b-c-neutral;
+        color: @b-c-neutral;
+
+
+        &:hover {
+            background-color: @b-c-neutral;
+            color: #fff;
+        }
+    }
+}
+
+table {
+    .btn {
+        display: inline-block;
+        border: 2px solid #333;
+        border-radius: 2px;
+        padding: 2px;
+        width: min-content;
+        white-space: nowrap;
+        cursor: pointer;
+        margin: 2px;
+        transition: all 50ms linear;
+        box-shadow: 2px 2px 2px 1px rgba(0,0,0,.1);
+        box-sizing: border-box;
+        text-align: center;
+        background:#fff;
+    }
+}

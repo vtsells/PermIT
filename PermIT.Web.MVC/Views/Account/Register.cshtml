@@ -1,0 +1,37 @@
+﻿@model PermIT.Web.MVC.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<section class="loginForm">
+    <div class="login-form-middle">
+        <h2>Register</h2>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <br />
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <br />
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+            <div>
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                <br />
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Register" />
+
+        }
+    </div>
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

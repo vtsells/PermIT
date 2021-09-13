@@ -1,0 +1,70 @@
+
+<div class="panels vertical">
+  <div class="panel panel-vertical">
+    <div class="full-row" data-bind="with:summary">
+      <h4>Since: <span data-bind="text:Q"> </span> - <span data-bind="text:Start_of_Quarter"></span></h4>
+      <hr/>
+      <div class="info-boxes flex-start">
+        <div class="info-box">
+          <div class="icon"><i class="far fa-paper-plane"></i></div>
+          <div class="info">
+            <div class="info-title">Total Campaigns</div>
+            <div class="info-info" data-bind="text:Total_Campaigns"></div>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><i class="far fa-envelope"></i></div>
+          <div class="info">
+            <div class="info-title">Total Emails</div>
+            <div class="info-info" data-bind="text:Total_Emails_Sent"></div>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><i class="far fa-envelope-open"></i></div>
+          <div class="info">               
+            <div class="info-title">Successful Attempts</div>
+            <div class="info-info" data-bind="text:Successful_Phishing_Attempts"></div>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><i class="fas fa-link"></i></div>
+          <div class="info">               
+            <div class="info-title">Total Link Clicks</div>
+            <div class="info-info" data-bind="text:Total_Link_Clicks"></div>
+          </div>
+        </div>
+        <div class="info-box">
+          <div class="icon"><i class="fas fa-paperclip"></i></div>
+          <div class="info">               
+            <div class="info-title">Total Attachment Clicks</div>
+            <div class="info-info" data-bind="text:Total_Attachment_Clicks"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-vertical" data-bind="with:repeatOffenders">
+    <h4>Repeat Offenders</h4>
+    <hr/>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Email Address</th>
+          <th>Emails Clicked</th>
+          <th>Total Link Clicks</th>
+          <th>Total Attachment Clicks</th>
+        </tr>
+      </thead>
+      <tbody><!--ko foreach:$data -->
+        <tr data-bind="click:function(){}">
+          <td data-bind="text:ToEmail"></td>
+          <td data-bind="text:Total_Emails"></td>
+          <td data-bind="text:Total_Link_Clicks"></td>
+          <td data-bind="text:Total_Attachment_Clicks"></td>
+        </tr><!--/ko-->
+      </tbody>
+    </table>
+    <!--.div(style="position: relative;width:400px;height:200px;")-->
+    <!--.    canvas(data-bind="chart:monthlyClicks")-->
+  </div>
+</div>

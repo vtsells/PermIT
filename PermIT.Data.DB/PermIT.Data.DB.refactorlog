@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="e5665db0-12ae-4f65-9f1c-5a7196223f33" ChangeDateTime="08/20/2021 16:11:01">
+    <Property Name="ElementName" Value="[dbo].[Exception].[N[Reason]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Exception]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Reason" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="57f4287f-bcbd-4bb5-ad88-9e7c5b4aab54" ChangeDateTime="08/20/2021 16:18:54">
+    <Property Name="ElementName" Value="[dbo].[Group].[Rea[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Group]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="20087afa-a165-4ee9-a3e5-3a5c92e7c212" ChangeDateTime="08/20/2021 16:19:24">
+    <Property Name="ElementName" Value="[dbo].[Group].[PermissionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Group]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApplicationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3483fbde-389b-4375-a59a-1d5625881f01" ChangeDateTime="08/20/2021 18:23:00">
+    <Property Name="ElementName" Value="[dbo].[ChecklistTemplate].[ApplicationId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChecklistTemplate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="JobId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9c2a1510-b3d5-40c2-aa0a-43d302760dd4" ChangeDateTime="08/20/2021 19:19:21">
+    <Property Name="ElementName" Value="[dbo].[GroupUser].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[GroupUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b3b543ff-a124-4af9-92ac-287969c392fd" ChangeDateTime="08/20/2021 19:22:37">
+    <Property Name="ElementName" Value="[dbo].[ApplicationUser].[GroupId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ApplicationUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApplicationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8d46371b-478c-4419-8014-4e3924a55b6f" ChangeDateTime="08/20/2021 19:23:35">
+    <Property Name="ElementName" Value="[dbo].[ChecklistUser].[ApplicationId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChecklistUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChecklistId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2ca5ac54-6f05-4d01-81d1-5a4376c76607" ChangeDateTime="08/20/2021 19:25:37">
+    <Property Name="ElementName" Value="[dbo].[JobUser].[ChecklistId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[JobUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="JobId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cea6f9e7-092a-49bf-8c73-5c844ab81f22" ChangeDateTime="08/24/2021 15:45:11">
+    <Property Name="ElementName" Value="[dbo].[FK_ApplicationUser_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ApplicationUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_ApplicationUser_ToUser]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cd7b7d67-66e6-4d86-a877-2ad560173ab8" ChangeDateTime="08/24/2021 15:45:16">
+    <Property Name="ElementName" Value="[dbo].[FK_ApplicationUser_ToTable_1]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[ApplicationUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_ApplicationUser_ToApplication]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="87f0c40d-8d3b-4f66-a4c5-f83685aeaead" ChangeDateTime="08/24/2021 17:06:50">
+    <Property Name="ElementName" Value="[dbo].[FK_DepartmentUser_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[DepartmentUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_DepartmentUser_ToUser]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="820a5aa2-75c8-4ab3-be3a-1ae28cc7347b" ChangeDateTime="08/24/2021 17:06:55">
+    <Property Name="ElementName" Value="[dbo].[FK_DepartmentUser_ToTable_1]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[DepartmentUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_DepartmentUser_ToDepartment]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="766747ca-2add-42c8-bb14-aba7758dcb92" ChangeDateTime="08/24/2021 17:12:33">
+    <Property Name="ElementName" Value="[dbo].[FK_GroupUser_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[GroupUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_GroupUser_ToUser]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="61259ec9-610f-4baf-a89a-9ed45be1f5c6" ChangeDateTime="08/24/2021 17:12:38">
+    <Property Name="ElementName" Value="[dbo].[FK_GroupUser_ToTable_1]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[GroupUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_GroupUser_ToGroup]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7e3a3c60-2f22-4020-987a-3d897c0e27ee" ChangeDateTime="08/24/2021 17:16:25">
+    <Property Name="ElementName" Value="[dbo].[FK_JobUser_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[JobUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_JobUser_ToUser]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d482ddfd-8bfe-4a83-8634-6d546d4888eb" ChangeDateTime="08/24/2021 17:16:31">
+    <Property Name="ElementName" Value="[dbo].[FK_JobUser_ToTable_1]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[JobUser]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_JobUser_ToJob]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3d4ede8a-92a5-4e51-ae8c-04bd7683445d" ChangeDateTime="09/03/2021 22:24:06">
+    <Property Name="ElementName" Value="[dbo].[User].[SSID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[User]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="148abdf1-8bf7-4468-912e-403d46147a90" ChangeDateTime="09/09/2021 15:27:55">
+    <Property Name="ElementName" Value="[dbo].[ChecklistTemplate].[Action]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChecklistTemplate]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="OnRemove" />
+  </Operation>
+</Operations>

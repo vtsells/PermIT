@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>PermIT.Data.DB</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{73a3804d-3a50-46d1-ae38-cf8339c2a56b}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>PermIT.Data.DB</RootNamespace>
+    <AssemblyName>PermIT.Data.DB</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Create" />
+    <Folder Include="Procs" />
+    <Folder Include="Views" />
+    <Folder Include="Create\Relationships" />
+    <Folder Include="Create\Children" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Create\User.sql" />
+    <Build Include="Create\Application.sql" />
+    <Build Include="Create\Job.sql" />
+    <Build Include="Create\Children\Exception.sql" />
+    <Build Include="Create\Children\Group.sql" />
+    <Build Include="Create\Children\Permission.sql" />
+    <Build Include="Create\Children\ChecklistTemplate.sql" />
+    <Build Include="Create\Children\ChecklistTemplateItem.sql" />
+    <Build Include="Create\Children\ChecklistItem.sql" />
+    <Build Include="Create\Relationships\GroupUser.sql" />
+    <Build Include="Create\Relationships\ApplicationUser.sql" />
+    <Build Include="Create\Relationships\JobUser.sql" />
+    <Build Include="Views\UserView.sql" />
+    <Build Include="Procs\UserProc.sql" />
+    <Build Include="Views\JobView.sql" />
+    <Build Include="Procs\JobProc.sql" />
+    <Build Include="Procs\ChecklistProc.sql" />
+    <Build Include="Procs\ApplicationProc.sql" />
+    <Build Include="Views\ChecklistView.sql" />
+    <Build Include="Views\ApplicationView.sql" />
+    <Build Include="Views\GroupView.sql" />
+    <Build Include="Procs\GroupProc.sql" />
+    <Build Include="Views\PermissionView.sql" />
+    <Build Include="Create\Department.sql" />
+    <Build Include="Create\Relationships\DepartmentUser.sql" />
+    <Build Include="Procs\PermissionProc.sql" />
+    <Build Include="Views\ChecklistTemplateView.sql" />
+    <Build Include="Procs\ChecklistTemplateProc.sql" />
+    <Build Include="Views\ChecklistTemplateItemView.sql" />
+    <Build Include="Procs\ChecklistTemplateItemProc.sql" />
+    <Build Include="Procs\ChecklistItemProc.sql" />
+    <Build Include="Views\ChecklistItemView.sql" />
+    <Build Include="Views\DepartmentView.sql" />
+    <Build Include="Procs\DepartmentProc.sql" />
+    <Build Include="Create\Children\Checklist.sql" />
+    <Build Include="Create\Setting.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="PermIT.Data.DB.refactorlog" />
+  </ItemGroup>
+</Project>

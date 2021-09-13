@@ -1,0 +1,13 @@
+﻿.panels
+    .tabs
+        nav.tab-nav
+            ul(data-bind="foreach:links")
+                li(data-bind="css:{'active': $root.hash().includes(hash)}")
+                    a(data-bind="attr:{href:hash}")
+                        i(data-bind="class:i")
+                        span(data-bind="text:text")
+        |<!-- ko foreach:links -->
+        .tab-page(data-bind="visible:$root.hash().includes(hash),component:{name:tabPage,params:tabPageParams}")
+        |<!-- /ko -->
+            
+    

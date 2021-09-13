@@ -1,0 +1,11 @@
+
+<div class="panels">
+  <div class="tabs">
+    <nav class="tab-nav">
+      <ul data-bind="foreach:links">
+        <li data-bind="css:{'active': $root.hash().includes(hash)}"><a data-bind="attr:{href:hash}"><i data-bind="class:i"></i><span data-bind="text:text"></span></a></li>
+      </ul>
+    </nav><!-- ko foreach:links -->
+    <div class="tab-page" data-bind="visible:$root.hash().includes(hash),component:{name:tabPage,params:tabPageParams}"></div><!-- /ko -->
+  </div>
+</div>

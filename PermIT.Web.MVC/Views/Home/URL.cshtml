@@ -1,0 +1,19 @@
+﻿@*@section SPAViews {
+    @Html.Partial("_Home")
+}*@
+@{ ViewBag.Title = "You got caught"; }
+<div id="caught">
+    <div id="caught-middle">
+        <h2>
+            Unfortunately, this was a phishing test.
+        </h2>
+        <hr style="width:100%"/>
+        <p>
+            Your click has been recorded.
+        </p>
+    </div>
+</div>
+@*@section Scripts{
+    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/app")
+}*@

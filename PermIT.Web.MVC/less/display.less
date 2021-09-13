@@ -1,0 +1,219 @@
+﻿.content{
+    max-height:100%;
+    overflow:auto;
+}
+.header {
+    display: grid;
+    grid-template-columns: auto auto;
+
+    ul.icon-list {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+        height: 100%;
+
+        li {
+            display: flex;
+            border-left-width: 1px;
+            border-left-style: solid;
+            border-right-width: 1px;
+            border-right-style: solid;
+        }
+
+        &.horizontal {
+            align-items: stretch;
+
+            a {
+                display: flex;
+                height: 100%;
+                align-items: center;
+                text-decoration: none;
+            }
+
+            i {
+                font-size: 30px;
+                padding: 0 10px;
+                flex-grow: 1;
+            }
+        }
+
+        &.right {
+            justify-self: flex-end;
+        }
+    }
+}
+//panels
+.panels{
+    width:100%;
+    height:100%;
+    padding:10px;
+    //border:solid 1px #0f0;
+    box-sizing:border-box;
+    .panel{
+      //  border:solid 1px #00f;
+      height:100%;
+    }
+}
+//tabs
+.tabs {
+    // border:solid 1px #f00;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0 10px 10px 10px;
+
+    .tab-page {
+        // border:1px solid #0ff;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 100;
+        box-sizing: border-box;
+        padding: 10px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+        min-height: 100%;
+   
+    }
+
+    nav.tab-nav {
+        padding-top: 10px;
+        position: relative;
+        z-index: 101;
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            height: 100%;
+            margin: 0;
+        }
+
+        ul li {
+            padding: 5px 10px;
+            position: relative;
+            top: 1px;
+            border: 1px solid transparent;
+        }
+
+        ul li i {
+            width: 20px;
+        }
+
+        ul li.active {
+            //border-width:0px;
+            //border-style:double;
+            //border-bottom:none;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            z-index: 101;
+        }
+    }
+}
+
+.tablebox {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+
+}
+.tablebox table{
+    position:relative;
+    box-sizing:border-box;
+    border-collapse:collapse;
+    width:100%;
+    flex-grow:1;
+    flex-shrink:1;
+    table-layout:fixed;
+   // white-space:nowrap;
+    th{
+        position:sticky;
+        top:0px;
+       // background:#fff;
+        text-align:left;
+       // border:1px solid #fff;
+       // box-shadow:0 0 1px 1px #fff;
+        box-sizing:border-box;
+        z-index:1000;
+    }
+    th,td{
+        padding:3px;
+    }
+    &.hover tbody tr{
+        cursor:pointer;
+    }
+}
+.grid2x2{
+    max-height:100%;
+    height:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    //overflow:hidden;
+}
+.grid2x1 {
+    max-height: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    //overflow:hidden;
+}
+.grid1x1 {
+    max-height: 100%;
+    height: 100%;
+    display: grid;
+   // grid-template-columns: 1fr 1fr;
+    //grid-template-rows: 1fr 1fr;
+    //overflow:hidden;
+}
+.flexRow{
+    display:flex;
+    align-items:center;
+    &.stretch{
+        justify-content:stretch;
+    }
+    *{
+        flex-grow:1;
+    }
+}
+.grid-panel {
+    //padding:10px;
+    display:flex;
+    max-height:100%;
+    min-height:10%;
+    align-items:stretch;
+    justify-content:stretch;
+    flex-direction:column;
+    border: 1px solid rgba(0,0,0,.2);
+    box-shadow: 3px 3px 3px 1px rgba(0,0,0,.2);
+    margin:10px;
+    padding:10px;
+    //box-shadow:0 0 3px 1px @c-primary-dark;
+    hr{
+        width:100%;
+    }
+}
+h1,h2,h3,h4,h5,h6{
+    margin:5px;
+}
+.field{
+    display:flex;
+    margin:5px 0;
+    label:after{
+        content:': ';
+    }
+    p{
+        margin:0 5px;
+    }
+    input.long{
+        width:200px;
+    }
+}
+.block {
+    width: 100%;
+    margin:2px;
+}

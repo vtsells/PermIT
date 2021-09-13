@@ -1,0 +1,61 @@
+﻿.panels.vertical
+    .panel.panel-vertical
+        div.full-row(data-bind="with:summary")
+            h4
+                |Since: 
+                span(data-bind="text:Q") 
+                |  - 
+                span(data-bind="text:Start_of_Quarter")
+            hr
+            .info-boxes.flex-start
+                .info-box
+                    .icon
+                        i.far.fa-paper-plane
+                    .info
+                        .info-title Total Campaigns
+                        .info-info(data-bind="text:Total_Campaigns")
+                .info-box
+                    .icon
+                        i.far.fa-envelope
+                    .info
+                        .info-title Total Emails
+                        .info-info(data-bind="text:Total_Emails_Sent")
+                .info-box
+                    .icon
+                        i.far.fa-envelope-open
+                    .info                
+                        .info-title Successful Attempts
+                        .info-info(data-bind="text:Successful_Phishing_Attempts")
+                .info-box
+                    .icon
+                        i.fas.fa-link
+                    .info                
+                        .info-title Total Link Clicks
+                        .info-info(data-bind="text:Total_Link_Clicks")
+                .info-box
+                    .icon
+                        i.fas.fa-paperclip
+                    .info                
+                        .info-title Total Attachment Clicks
+                        .info-info(data-bind="text:Total_Attachment_Clicks")
+    .panel.panel-vertical(data-bind="with:repeatOffenders")
+        h4 Repeat Offenders
+        hr
+        table.striped
+            thead
+                tr
+                    th Email Address
+                    th Emails Clicked
+                    th Total Link Clicks
+                    th Total Attachment Clicks
+
+            tbody
+                | <!--ko foreach:$data -->
+                tr(data-bind="click:function(){}")
+                    td(data-bind="text:ToEmail")
+                    td(data-bind="text:Total_Emails")
+                    td(data-bind="text:Total_Link_Clicks")
+                    td(data-bind="text:Total_Attachment_Clicks")
+                | <!--/ko-->
+        //.div(style="position: relative;width:400px;height:200px;")
+        //.    canvas(data-bind="chart:monthlyClicks")

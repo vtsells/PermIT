@@ -1,0 +1,29 @@
+﻿section.layout-simple
+  section.sidebar
+    .flex-row#sidebar-header
+        i.fas.fa-theater-masks
+        span(data-bind="text:$root.title")
+        //-#user-menu
+             i.fas.fa-user-circle(data-bind="click:toggleOpen")
+             form#logout-form(action="/Account/LogOff",method="POST")
+                ul(data-bind="css:{open:isOpen}")
+                    li
+                        a(href="javascript:sessionStorage.removeItem('accessToken');document.querySelector('#logout-form').submit()") Sign out
+
+    nav(data-bind="component:{name:'nav',params:nav}")
+  section.header
+    span.padded#page-header(data-bind="text:page") Home
+    ul.icon-list.horizontal.right
+        li
+            form#logout-form(action="/Account/LogOff",method="POST")
+                a(href="javascript:sessionStorage.removeItem('accessToken');document.querySelector('#logout-form').submit()")
+                    i.fas.fa-user-circle
+        //-li
+        //-    a(href="#")
+        //-        i.fas.fa-user-circle
+        //-li
+        //-    a(href="#")
+        //-        i.fas.fa-user-circle
+  section.content(data-bind="visible:($root.hash().includes('#users')),component:{name:'users'}")
+
+

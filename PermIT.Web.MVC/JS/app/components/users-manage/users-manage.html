@@ -1,0 +1,36 @@
+
+<div class="grid1x1">
+  <div class="grid-panel">
+    <h5>Unsynced Users</h5>
+    <hr/>
+    <div class="tablebox">
+      <table class="striped">
+        <thead>
+          <tr>
+            <th>
+               <!-- ko component:{name:'loader',params:[loading_get]} -->
+              <!-- /ko -->
+              First Name
+            </th>
+            <th>Last Name</th>
+            <th>Sync Action</th>
+            <!--th SID-->
+          </tr>
+        </thead>
+        <tbody><!--ko foreach:unSyncedUsers() -->
+          <tr data-bind="click:function(){}">
+            <td data-bind="text:FirstName"></td>
+            <td data-bind="text:LastName"></td>
+            <td data-bind="text:SyncStatusToString"></td>
+          </tr><!--/ko-->
+        </tbody>
+      </table>
+    </div>
+    <hr/>
+    <div class="btn btn-positive btn-block" data-bind="click:syncUsers">
+      <!-- ko component:{name:'loader',params:[loading_syncing]} -->
+      <!-- /ko -->
+      Sync Users
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+
+<div class="grid1x1">
+  <div class="grid-panel">
+    <div class="tablebox">
+      <table class="striped hover">
+        <thead>
+          <tr>
+            <th>
+               <!-- ko component:{name:'loader',params:[loading_get]} -->
+              <!-- /ko -->
+              First Name
+            </th>
+            <th>Last Name</th>
+            <th>Enabled</th>
+            <th>Jobs</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody><!--ko foreach:users() -->
+          <tr data-bind="click:function(){$component.select(Id)}">
+            <td data-bind="text:FirstName"></td>
+            <td data-bind="text:LastName"></td>
+            <td>
+              <input type="checkbox" data-bind="checked:Enabled"/>
+            </td>
+            <td data-bind="text:Jobs"></td>
+            <td>
+              <div data-bind="visible:$component.selectedId()==Id">
+                <div class="btn btn-positive btn-block" data-bind="visible:!Enabled,click:$component.onEnableUser">Enable</div>
+                <div class="btn btn-negative btn-block" data-bind="visible:Enabled,click:$component.onDisableUser">Disable</div>
+                <div class="flexRow">
+                  <div class="btn btn-neutral" data-bind="click:$component.onAssignJob">Assign Job</div>
+                  <select data-bind="value:$component.assignJob.jobId,options: $component.jobList, optionsText: 'text', optionsValue: 'value', optionsCaption:  'Choose One...',valueAllowUnset:true"></select>
+                </div>
+              </div>
+            </td>
+          </tr><!--/ko-->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
